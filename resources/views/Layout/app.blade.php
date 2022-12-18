@@ -9,5 +9,18 @@
 </head>
 <body>
     @yield('content')
+
+    <footer class="fixarRodape">
+        Developed by <a href="https://github.com/felipeflorianof" target="_blank">Felipe Floriano F.</a>
+    </footer>
+<style>
+    .fixarRodape {
+        border-top: 1px solid #a0a0a052;;
+        bottom: 0;
+        position: fixed;
+        width: 115%;
+        text-align: center;
+    }
+</style>
 </body>
 </html>

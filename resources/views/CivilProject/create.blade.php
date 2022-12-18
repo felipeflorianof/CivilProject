@@ -14,13 +14,10 @@
     <hr class="hr">
 
     <a class="opcoes" href="{{ route('CivilProject-index') }}"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg>
-    &nbsp;&nbsp;App</a>
+    &nbsp;&nbsp;Estoque</a>
     <a class="opcoes" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"><path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg>
       &nbsp;&nbsp;Entrada</a>
-    <a class="opcoes" href="#">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
-      &nbsp;&nbsp;Saida</a>
       <a class="opcoes" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-hammer" viewBox="0 0 16 16">
       <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
@@ -57,25 +54,6 @@
                     <label for="complemento"><b>Complemento</b></label>
                     <input type="text" class="form-control" name="complemento" placeholder="Complemento Ou Observações">
                 </div>
-                <br>
-                <div class="">
-                    <!-- Default radio -->
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required/>
-                    <label class="form-check-label" for="flexRadioDefault1"> Material </label>
-                    </div>
-
-                    <!-- Default checked radio -->
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required/>
-                    <label class="form-check-label" for="flexRadioDefault2"> Ferramenta </label>
-                    </div>
-
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" required/>
-                    <label class="form-check-label" for="flexRadioDefault3"> Outro </label>
-                    </div>
-                    <br>
                 <div class="form-group">
                     <input type="submit" name="submit" class="btn btn-primary">
                 </div>

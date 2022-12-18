@@ -14,8 +14,6 @@ h3{
 
 .Subtitulo{
     margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 .hr{
     width: 300px;
@@ -25,7 +23,19 @@ h3{
     width: 1000px;
 }
 
+.hr-3{
+    width: 1090px;
+}
+
 .container{
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container2{
     text-align: left;
     margin-left: 0;
     margin-right: 0;
@@ -68,22 +78,32 @@ h3{
     width: 330px;
     margin-left: 0;
     border-right: 1px solid #a0a0a052;
-    height: 790px;
+    height: auto;
 }
 
 .content{
-
+    display: flex;
     box-shadow: 1px 1px 3px black;
-    width: 500px;
+    width: 1000px;
     border-radius: 3px;
-    margin: auto;
-    padding: 30px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    padding: 30px; 
+    border-right: 1px solid black;
 }
 
+.content p{
+    margin-right: 10px;
+    margin-left: 10px;
+}
 .box-search{
     display: flex;
     justify-content: center;
     gap: 0.1%;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 15px;
   }
    .box-search-title{
     text-align: center;
@@ -92,7 +112,16 @@ h3{
     display: block;
   }
 
-  table{
+table{
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
     margin-left: 10px;
     max-width: 1000px;
-  }
+}
+
+button{
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
