@@ -15,11 +15,11 @@ class CivilController extends Controller
     public function create(){
         return view('CivilProject.create');
     }
-
     public function store(Request $request){
         material::create($request->all());
         return redirect()->route('CivilProject-index');
     }
+
 
     public function edit($id){
         $materials = material::where('id', $id)->first();
@@ -40,9 +40,13 @@ class CivilController extends Controller
         material::where('id', $id)->update($data);
         return redirect()->route('CivilProject-index');
     }
+    
 
     public function destroy($id){
         material::where('id', $id)->delete();
         return redirect()->route('CivilProject-index');
     }
+
+
+    
 }

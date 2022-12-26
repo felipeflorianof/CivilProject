@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
     Route::get('/create', [CivilController::class, 'create'])->name('CivilProject-create');
     
     Route::post('/', [CivilController::class, 'store'])->name('CivilProject-store');
+
+
+    
     
     Route::get('/{id}/edit', [CivilController::class, 'edit'])->where('id', '[0-9]+')->name('CivilProject-edit');
     

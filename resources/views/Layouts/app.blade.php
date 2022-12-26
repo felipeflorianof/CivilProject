@@ -1,5 +1,3 @@
-
-@section('subtitle', 'Estoque')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/create.css') }}">
     <title>@yield('title', 'Almoxarife')</title>
 </head>
 <body>
@@ -27,12 +24,42 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"><path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg>&nbsp;&nbsp;Entrada
     </a>
 
-    <a href="/" class="opcoes" id="open-modal">
+    <button class="opcoes" id="open-modal">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
       </svg>&nbsp;&nbsp;Saida
-    </a>
-
+    </button>
+      <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+      <div class="modal-header">
+        <h2>Selecione o Item que deseja Encaminhar para a Saida</h2>
+        <button id="close-modal" class="btn btn-danger">Fechar</button>
+      </div>
+      <div class="modal-body">
+                <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Encaminhar</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach($materials as $material)
+                    <tr>
+                      <td><a href="#">{{ $material->nome }}</a></td>
+                      <td>{{ $material->quantidade }}</td>
+                      <td>{{ $material->marca }}</td>
+                      <td><a href="#" class="btn btn-success">Encaminhar</a></td>
+                    <td>
+                    </td>
+                    </tr>
+                @endforeach
+            </tbody>
+          </table>
+      </div>
+    </div>
     <a class="opcoes" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
       <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0Zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708ZM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11Z"/>
@@ -50,37 +77,12 @@
 
     @yield('content')
 
-<div class="form">
 
 
-    <form action="{{ route('CivilProject-store') }}" method="POST">
-        @csrf
-                <div class="form-group">
-                    <label for="nome"><b>Nome</b></label>
-                    <input type="text" class="form-control" name="nome" placeholder="Nome do Material / Ferramenta">
-                </div>
-                <div class="form-group">
-                    <label for="quantidade"><b>Quantidade</b></label>
-                    <input type="text" class="form-control" name="quantidade" placeholder="Quantidade do Material / Ferramenta">
-                </div>
-                <div class="form-group">
-                    <label for="marca"><b>Marca</b></label>
-                    <input type="text" class="form-control" name="marca" placeholder="Marca do Material / Ferramenta">
-                </div>
-                <div class="form-group">
-                    <label for="complemento"><b>Complemento</b></label>
-                    <input type="text" class="form-control" name="complemento" placeholder="Complemento Ou Observações">
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="submit" class="btn btn-primary">
-                </div>
-    </form>
 
-</div>
 </section>
 </section>
-
-
-<script src="{{ asset('JS/create.js') }}"></script>
-
-    
+    <script src="{{ asset('JS/index.js') }}"></script>
+</body>
+</html>
+<!--https://stackoverflow.com/questions/59982298/insert-trigger-subtract-value-from-another-table-->
