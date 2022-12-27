@@ -47,6 +47,15 @@ class CivilController extends Controller
         return redirect()->route('CivilProject-index');
     }
 
+    public function send($id){
+        $materials = material::where('id', $id)->first();
+
+        if(!empty($materials)){
+            return view('CivilProject.send', ['materials' => $materials]);
+        }else{
+            return redirect()->route('CivilProject-index');
+        }
+    }
 
     
 }

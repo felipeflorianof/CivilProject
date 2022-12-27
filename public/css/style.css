@@ -5,10 +5,6 @@
     box-sizing: border-box;
   }
 
-  a{
-      color: #000000;
-  }
-
   h3{
       margin-right: 0;
   }
@@ -45,6 +41,7 @@
   }
 
   .opcoes{
+      color: #000000;
       margin-top: 5px;
       margin-bottom: 5px;
       border-radius: 2px;
@@ -82,15 +79,11 @@
       height: auto;
   }
 
-  .content{
-    display: inline-block;
-      box-shadow: 1px 1px 3px black;
-      width: 350px;
-      border-radius: 3px;
-      margin-left: 50px;
-      margin-bottom: 50px;
-      padding: 30px; 
-      border-right: 1px solid black;
+  .card{
+    top:0px;
+  bottom:0px;
+      display: inline-block;
+      margin: 30px;
   }
 
   .content p{
@@ -158,6 +151,8 @@
     padding: 1.2rem;
     border-radius: 0.5rem;
     z-index: 10;
+    height: 80%;
+    overflow: scroll;
   }
   
   #fade,
@@ -192,5 +187,5 @@
 
   .acoes{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
