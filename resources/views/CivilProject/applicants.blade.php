@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <!--Layout Fixo-->
 
 <section class="pai">
 <section class="pai-container">
     <section class="container">
 
-    <h3>Controle Almoxarife</h3>
+    <img width="280" height="90" src="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png" class="elementor-animation-bob attachment-large size-large" alt="" srcset="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png 759w, https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2-300x108.png 300w" sizes="(max-width: 759px) 100vw, 759px">
     <hr class="hr">
 
     <a class="opcoes" href="{{ route('CivilProject-index') }}"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg>&nbsp;&nbsp;Estoque
@@ -15,10 +15,10 @@
     <a class="opcoes" href="{{ route('CivilProject-create') }}">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill" viewBox="0 0 16 16"><path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/></svg>&nbsp;&nbsp;Entrada
     </a>
-    <a href="/" class="opcoes" id="open-modal" onclick="warnning()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+    <a class="opcoes" href="/">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
       <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-      </svg>&nbsp;&nbsp;Saida
+    </svg>&nbsp;&nbsp;Saida
     </a>
     <a class="opcoes" href="#">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
@@ -33,56 +33,51 @@
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
     </svg>&nbsp;&nbsp;Hora Extra
     </a>
+    <a class="opcoes" href="{{ route('CivilProject-applicants') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+    <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+    </svg>&nbsp;&nbsp;Solicitações
+    </a>
 </section>
 </section>
 <!--Fim do Layout Fixo-->
 
 <!--Layout Dinâmico-->
 <section class="container2">
-<h3 class="Subtitulo">Estoque</h3>
+<h3 class="Subtitulo"><b>Lista de Solicitações</b></h3>
 <hr class="hr-3">
 
-    <div class="form">
-        <form action="{{ route('CivilProject-sendstore') }}" method="POST">
-            @csrf
-                <div class="form-group">
-                    <h3><b>Sobre o Item:</b></h3>
-                    <div class="form-group">
-                        <label for="nome"><b>Nome do Item</b></label>
-                        <input type="text" readonly class="form-control" name="nome" value="{{ $materials->nome }}" placeholder="Atualize o nome do Jogo">
-                    </div>
-                    <div class="form-group">
-                        <label for="marca"><b>Marca</b></label>
-                        <input type="text" readonly class="form-control" name="marca" value="{{ $materials->marca }}" placeholder="Atualize a Marca">
-                    </div>
-                    <div class="form-group">
-                        <label for="complemento"><b>Complemento</b></label>
-                        <input type="text" readonly class="form-control" name="complemento" value="{{ $materials->complemento }}" placeholder="Atualize o Complemento">
-                    </div>
-                    <br>
-                    <h3><b>Sobre o Retirante:</b></h3>
-                    <div class="form-group">
-                        <label for="complemento"><b>Nome do Solicitante</b></label>
-                        <input type="text" class="form-control" name="funcionario"  placeholder="Nome do Solicitante" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantidade"><b>Quantidade Solicitada</b></label>
-                        <input type="number" class="form-control" name="quantidade_solicitada" placeholder="Quantidade Solicitada" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quantidade"><b>Observações</b></label>
-                        <input type="text" class="form-control" name="observacoes" placeholder="Observações ou Complemento" required>
-                    </div>
-                    <Input  type="hidden"  name="id" value="{{$materials->id}}" >
-                    <div class="form-group">
-                        <input type="submit" name="submit" value="Enviar" class="btn btn-primary">
-                    </div>
-                </div>
-        </form>
-    </div>
+
+
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Solicitantes</th>
+      <th scope="col">item</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+  @foreach($applicants as $applicant)
+    <tr>
+      <td>{{ $applicant->funcionario }}</td>
+      <td>{{ $applicant->nome }}</td>
+      <td>{{ $applicant->quantidade }}</td>
+      <td>{{ $applicant->marca }}</td>
+      <td>{{ date('d/m/y', strtotime($applicant->created_at)) }}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+
 
 
 </section>
 </section>
 <!--Fim do Layout Dinâmico-->
+<script src="{{ asset('JS/index.js') }}"></script>
 @endsection

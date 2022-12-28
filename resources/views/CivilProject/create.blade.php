@@ -7,7 +7,7 @@
 <section class="pai-container">
     <section class="container">
 
-    <h3>Controle Almoxarife</h3>
+    <img width="280" height="90" src="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png" class="elementor-animation-bob attachment-large size-large" alt="" srcset="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png 759w, https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2-300x108.png 300w" sizes="(max-width: 759px) 100vw, 759px">
     <hr class="hr">
 
     <a class="opcoes" href="{{ route('CivilProject-index') }}"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg>&nbsp;&nbsp;Estoque
@@ -39,7 +39,7 @@
 
 <!--Layout Dinâmico-->
 <section class="container2">
-<h3 class="Subtitulo">Estoque</h3>
+<h3 class="Subtitulo">Entrada de itens</h3>
 <hr class="hr-3">
 
     <div class="form">
@@ -60,6 +60,13 @@
                     <div class="form-group">
                         <label for="complemento"><b>Complemento</b></label>
                         <input type="text" class="form-control" name="complemento" placeholder="Complemento Ou Observações">
+                    </div>
+                    <div class="form-group">
+                        <label for="title"><b>O item é Ferramenta ou Material?</b></label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="0" required>Ferramenta</option>
+                                <option value="1" required>Material</option>
+                            </select>
                     </div>
                     <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-primary">

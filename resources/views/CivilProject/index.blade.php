@@ -7,7 +7,7 @@
 <section class="pai-container">
     <section class="container">
 
-    <h3>Controle Almoxarife</h3>
+    <img width="280" height="90" src="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png" class="elementor-animation-bob attachment-large size-large" alt="" srcset="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png 759w, https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2-300x108.png 300w" sizes="(max-width: 759px) 100vw, 759px">
     <hr class="hr">
 
     <a class="opcoes" href="{{ route('CivilProject-index') }}"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/></svg>&nbsp;&nbsp;Estoque
@@ -77,14 +77,26 @@
     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
     </svg>&nbsp;&nbsp;Hora Extra
     </a>
+    <a class="opcoes" href="{{ route('CivilProject-applicants') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text" viewBox="0 0 16 16">
+    <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+    <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+    <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+    </svg>&nbsp;&nbsp;Solicitações
+    </a>
 </section>
 </section>
 <!--Fim do Layout Fixo-->
 
 <!--Layout Dinâmico-->
 <section class="container2">
-<h3 class="Subtitulo">Estoque</h3>
+<h3 class="Subtitulo"><b>Estoque</b></h3>
 <hr class="hr-3">
+
+@if(session('msg'))
+    <p class="msg">{{ session('msg') }}</p>
+    @endif
+
 
 @foreach($materials as $material)
 <div class="card" style="width: 18rem;">
@@ -93,7 +105,7 @@
     <h3 class="card-title"><b>{{ $material->nome }}</b></h3>
     <p><b>Marca: </b>{{ $material->marca }}</p>
     <p><b>Quantidade: </b>{{ $material->quantidade }}</p>
-    <p><b>Data:</b>{{ date('d/m/y', strtotime($material->created_at)) }}</p>
+    <p><b>Data:</b> {{ date('d/m/y', strtotime($material->created_at)) }}</p>
     <p class="card-text">Para Saber mais detalhes deste item <a href="#" class="link-primary">Clique aqui</a></p>
     <div class="acoes">
               <a href="{{ route('CivilProject-edit', ['id' => $material->id]) }}">

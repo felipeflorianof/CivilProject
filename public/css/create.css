@@ -45,6 +45,7 @@
   }
 
   .opcoes{
+      background-color: #e8e8e5;
       margin-top: 5px;
       margin-bottom: 5px;
       border-radius: 2px;
@@ -52,7 +53,6 @@
       font-weight: bold;
       cursor: pointer;
       padding: 10px;
-      background-color: white;
       border: none;
       text-decoration: none;
       display:list-item;
@@ -69,33 +69,6 @@
       text-decoration: none;
       transition: 0.5s;
       background-color: rgb(105, 157, 235);
-  }
-
-  .opcoes-notavailable{
-    border: 1px solid red;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 2px;
-    width: 300px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
-    background-color: rgb(224, 150, 150);
-    text-decoration: none;
-    display:list-item;
-    list-style:none; 
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    flex-wrap: wrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .opcoes-notavailable:hover{
-    text-decoration: none;
-    transition: 0.5s;
-    background-color: rgb(235, 105, 105);
   }
 
   .pai{
@@ -149,6 +122,7 @@
 
   body {
     padding: 1rem;
+    background-color: #e8e8e5;
   }
   
   h1 {

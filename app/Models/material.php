@@ -15,4 +15,8 @@ class material extends Model
         'marca',
         'complemento',
     ];
+
+    public function applicant(){
+        return $this->hasMany('App\Models\Applicant');
+    }
 }

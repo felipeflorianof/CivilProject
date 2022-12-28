@@ -30,6 +30,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::get('/{id}/send', [CivilController::class, 'send'])->where('id', '[0-9]+')->name('CivilProject-send');
 
+    Route::post('/sendstore', [CivilController::class, 'sendstore'])->where('id', '[0-9]+')->name('CivilProject-sendstore');
+
+    Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilProject-applicants');
+
     //Route::fallback([jogosController::class, 'error']);
 
 

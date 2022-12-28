@@ -41,6 +41,7 @@
   }
 
   .opcoes{
+      background-color: #e8e8e5;
       color: #000000;
       margin-top: 5px;
       margin-bottom: 5px;
@@ -49,7 +50,6 @@
       font-weight: bold;
       cursor: pointer;
       padding: 10px;
-      background-color: white;
       border: none;
       text-decoration: none;
       display:list-item;
@@ -123,6 +123,7 @@
 
   body {
     padding: 1rem;
+    background-color: #e8e8e5;
   }
   
   h1 {
@@ -188,4 +189,14 @@
   .acoes{
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #c3E6CB;
+    width: 500px;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
   }

@@ -7,22 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * create migration
-     * php artisan make:migration create_CivilProject_table
-     * 
      * Run the migrations.
-     * php artisan migrate
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('_civil_project', function (Blueprint $table) {
+        Schema::create('applicants', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome', 55);
+            $table->string('nome');
             $table->integer('quantidade');
-            $table->string('marca', 55);
-            $table->string('complemento', 55);
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_civil_project');
+        Schema::dropIfExists('applicants');
     }
 };
