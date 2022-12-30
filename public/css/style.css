@@ -200,3 +200,9 @@
     text-align: center;
     padding: 10px;
   }
+
+  .datetitle{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+  }

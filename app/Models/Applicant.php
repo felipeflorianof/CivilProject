@@ -11,6 +11,6 @@ class Applicant extends Model
 
 
     public function applicant(){
-        return $this->belongsTo('App\Models\materials');
+        return $this->belongsTo('App\Models\material');
     }
 }

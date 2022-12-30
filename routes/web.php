@@ -15,26 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-    Route::get('/', [CivilController::class, 'index'])->name('CivilProject-index');
+Route::get('/', [CivilController::class, 'index'])->name('CivilProject-index');
+Route::get('/create', [CivilController::class, 'create'])->name('CivilProject-create');
+Route::post('/', [CivilController::class, 'store'])->name('CivilProject-store');
+Route::get('/edit/{id}', [CivilController::class, 'edit'])->where('id', '[0-9]+')->name('CivilProject-edit');
+Route::put('/{id}', [CivilController::class, 'update'])->where('id', '[0-9]+')->name('CivilProject-update');
+Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+')->name('CivilProject-destroy');
+Route::get('/send/{id}', [CivilController::class, 'send'])->where('id', '[0-9]+')->name('CivilProject-send');
+Route::post('/sendstore', [CivilController::class, 'sendstore'])->where('id', '[0-9]+')->name('CivilProject-sendstore');
+Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilProject-applicants');
+Route::get('/tools', [CivilController::class, 'tools'])->name('CivilProject-tools');
+Route::get('/materials', [CivilController::class, 'materials'])->name('CivilProject-materials');
+Route::get('/info/{id}', [CivilController::class, 'info'])->where('id', '[0-9]+')->name('CivilProject-info');
+Route::fallback([CivilController::class, 'notfound'])->name('CivilProject-notfound');
 
-    Route::get('/create', [CivilController::class, 'create'])->name('CivilProject-create');
-    
-    Route::post('/', [CivilController::class, 'store'])->name('CivilProject-store');
-    
-    Route::get('/{id}/edit', [CivilController::class, 'edit'])->where('id', '[0-9]+')->name('CivilProject-edit');
-    
-    Route::put('/{id}', [CivilController::class, 'update'])->where('id', '[0-9]+')->name('CivilProject-update');
-
-    Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+')->name('CivilProject-destroy');
-
-
-    Route::get('/{id}/send', [CivilController::class, 'send'])->where('id', '[0-9]+')->name('CivilProject-send');
-
-    Route::post('/sendstore', [CivilController::class, 'sendstore'])->where('id', '[0-9]+')->name('CivilProject-sendstore');
-
-    Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilProject-applicants');
-
-    //Route::fallback([jogosController::class, 'error']);
 
 
 

@@ -3,28 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
-use App\Models\material;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class CivilController extends Controller
 {
     public function index(){
-        $materials = material::all();
-         return view('CivilProject.index', ['materials' => $materials]);
+        $materials = Material::all();
+        return view('CivilProject.index', ['materials' => $materials]);
     }
 
     public function create(){
-        return view('CivilProject.create');
+        $materials = Material::all();
+        return view('CivilProject.create', ['materials' => $materials]);
     }
     public function store(Request $request){
 
-        $materials = new material;
+        $materials = new Material;
 
         $materials->nome = $request->nome;
         $materials->quantidade = $request->quantidade;
         $materials->marca = $request->marca;
         $materials->complemento = $request->complemento;
         $materials->type = $request->type;
+        $materials->quantidadeoriginal = $request->quantidade;
 
         $materials->save();
         return redirect()->route('CivilProject-index')->with('msg', 'Item adicionado ao estoque!');
@@ -48,7 +50,7 @@ class CivilController extends Controller
 
 
     public function edit($id){
-        $materials = material::where('id', $id)->first();
+        $materials = Material::where('id', $id)->first();
 
         if(!empty($materials)){
             return view('CivilProject.edit', ['materials' => $materials]);
@@ -63,18 +65,18 @@ class CivilController extends Controller
             'marca' => $request->marca,
             'complemento' => $request->complemento
         ];
-        material::where('id', $id)->update($data);
+        Material::where('id', $id)->update($data);
         return redirect()->route('CivilProject-index')->with('msg', 'Item editado com sucesso!');
     }
     
 
     public function destroy($id){
-        material::where('id', $id)->delete();
+        Material::where('id', $id)->delete();
         return redirect()->route('CivilProject-index');
     }
 
     public function send($id){
-        $materials = material::where('id', $id)->first();
+        $materials = Material::where('id', $id)->first();
 
         if(!empty($materials)){
             return view('CivilProject.send', ['materials' => $materials]);
@@ -86,10 +88,28 @@ class CivilController extends Controller
     public function applicants(){
 
         $applicants = Applicant::all();
-        $materials = material::all();
+        $materials = Material::all();
 
 
         return view('CivilProject.applicants', ['materials' => $materials, 'applicants' => $applicants]);
     }
-    
+
+    public function tools(){
+        return view('CivilProject.tools');
+    }
+
+    public function materials(){
+        return view('CivilProject.materials');
+    }
+
+    public function notfound(){
+        return view('CivilProject.notfound');
+    }
+
+    public function info($id){
+       $materials = material::findOrFail($id);
+
+       return view('CivilProject.info', ['materials' => $materials]);
+    }
+        
 }

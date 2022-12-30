@@ -5,6 +5,7 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@if(type == 1)
 @foreach($materials as $material)
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/img/pexels-jeshootscom-834892.jpg" alt="Card image cap">
@@ -13,7 +14,7 @@
     <p><b>Marca: </b>{{ $material->marca }}</p>
     <p><b>Quantidade: </b>{{ $material->quantidade }}</p>
     <p><b>Data:</b> {{ date('d/m/y', strtotime($material->created_at)) }}</p>
-    <p class="card-text">Para Saber mais detalhes deste item <a href="{{ route('CivilProject-info', ['id' => $material->id]) }}" class="link-primary">Clique aqui</a></p>
+    <p class="card-text">Para Saber mais detalhes deste item <a href="#" class="link-primary">Clique aqui</a></p>
     <div class="acoes">
               <a href="{{ route('CivilProject-edit', ['id' => $material->id]) }}">
               <button class="btn btn-primary">Editar</button>
@@ -28,4 +29,5 @@
   </div>
 </div>
 @endforeach
+@endif
 @endsection
