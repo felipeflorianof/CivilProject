@@ -9,8 +9,22 @@ use Illuminate\Http\Request;
 class CivilController extends Controller
 {
     public function index(){
-        $materials = Material::all();
-        return view('CivilProject.index', ['materials' => $materials]);
+
+        $search = request('search');
+
+        if($search){
+            
+            $materials = Material::where([
+
+            ['nome', 'like', '%'.$search.'%']
+
+            ])->get();
+
+        }else{
+            $materials = Material::all();
+        }
+        
+        return view('CivilProject.index', ['materials' => $materials, 'search' => $search]);
     }
 
     public function create(){
@@ -41,7 +55,6 @@ class CivilController extends Controller
         $applicants->funcionario = $request->funcionario;
         $applicants->quantidade = $request->quantidade_solicitada;
         $applicants->observacoes = $request->observacoes;
-
         $applicants->materials_id = $request->id;
 
         $applicants->save();
@@ -87,29 +100,57 @@ class CivilController extends Controller
 
     public function applicants(){
 
-        $applicants = Applicant::all();
-        $materials = Material::all();
+        $searchapplicants = request('searchapplicants');
 
+        if($searchapplicants){
+            
+            $applicants = Applicant::where([
 
-        return view('CivilProject.applicants', ['materials' => $materials, 'applicants' => $applicants]);
-    }
+            ['created_at', 'like', '%'.$searchapplicants.'%']
 
-    public function tools(){
-        return view('CivilProject.tools');
-    }
+            ])->get();
 
-    public function materials(){
-        return view('CivilProject.materials');
-    }
+        }else{
+            $applicants = Applicant::all();
+        }
 
-    public function notfound(){
-        return view('CivilProject.notfound');
+        return view('CivilProject.applicants', ['applicants' => $applicants, 'searchapplicants' => $searchapplicants]);
     }
 
     public function info($id){
        $materials = material::findOrFail($id);
 
        return view('CivilProject.info', ['materials' => $materials]);
+    }
+
+    public function select(){
+        $searchselect = request('searchselect');
+
+        if($searchselect){
+            
+            $materials = Material::where([
+
+            ['nome', 'like', '%'.$searchselect.'%']
+
+            ])->get();
+
+        }else{
+            $materials = Material::all();
+        }
+        
+        return view('CivilProject.select', ['materials' => $materials, 'search' => $searchselect]);
+    }
+
+
+    public function extra(){
+        return view('CivilProject.extra');
+    }
+
+
+
+
+    public function notfound(){
+        return view('CivilProject.notfound');
     }
         
 }

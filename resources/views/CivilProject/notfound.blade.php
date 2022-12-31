@@ -14,5 +14,3 @@
 <br><br><br>
 <p><a href="/">Voltar ao Sistema</a></p>
 
-</body>
-</html>

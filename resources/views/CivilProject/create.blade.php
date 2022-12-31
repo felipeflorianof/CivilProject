@@ -1,11 +1,10 @@
-@extends('Layouts.app')
-
+@extends('Layouts.main')
 @section('title')
+@section('subtitulo', 'Entrada de itens')
 
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/create.css') }}">
-<link rel="stylesheet" href="{{ asset('css/pattern.css') }}">
 <div class="form">
         <form action="{{ route('CivilProject-store') }}" method="POST">
             @csrf

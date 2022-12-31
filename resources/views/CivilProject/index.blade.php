@@ -1,10 +1,24 @@
-@extends('Layouts.app')
-
+@extends('Layouts.main')
 @section('title')
+@section('subtitulo', 'Estoque')
 
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<div id="search-container">
+    <form action="/" method="GET">
+    <div class='box-div'>
+            <div class='box-search'>
+                <form action="/" method="get"><input type='search' class='form-control text-center' placeholder='Pesquise o item que deseja Encontrar' id='pesquisar' name="search"></form>   
+                <button class='btn btn-primary'>
+                    <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+                    <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
+                </button>
+            </div>
+    </form>
+</div>
+</div>
+
 @foreach($materials as $material)
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/img/pexels-jeshootscom-834892.jpg" alt="Card image cap">

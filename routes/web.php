@@ -24,9 +24,10 @@ Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+
 Route::get('/send/{id}', [CivilController::class, 'send'])->where('id', '[0-9]+')->name('CivilProject-send');
 Route::post('/sendstore', [CivilController::class, 'sendstore'])->where('id', '[0-9]+')->name('CivilProject-sendstore');
 Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilProject-applicants');
-Route::get('/tools', [CivilController::class, 'tools'])->name('CivilProject-tools');
-Route::get('/materials', [CivilController::class, 'materials'])->name('CivilProject-materials');
 Route::get('/info/{id}', [CivilController::class, 'info'])->where('id', '[0-9]+')->name('CivilProject-info');
+Route::get('/select', [CivilController::class, 'select'])->name('CivilProject-select');
+Route::get('/extra', [CivilController::class, 'extra'])->name('CivilProject-extra');
+
 Route::fallback([CivilController::class, 'notfound'])->name('CivilProject-notfound');
 
 
