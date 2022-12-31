@@ -24,6 +24,7 @@
                 <th scope="col">Nome do item</th>
                 <th scope="col">Quantidade Atual</th>
                 <th scope="col">Marca</th>
+                <th scope="col">Complemento</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -35,6 +36,7 @@
                       <td>{{ $material->nome }}</td>
                       <td>{{ $material->quantidade }}</td>
                       <td>{{ $material->marca }}</td>
+                      <td>{{ $material->complemento }}</td>
                       <td><a href="{{ route('CivilProject-send', ['id' => $material->id]) }}" class="btn btn-success">Encaminhar</a></td>
                     <td>
                     </td>

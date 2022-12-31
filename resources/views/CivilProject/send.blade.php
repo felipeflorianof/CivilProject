@@ -4,6 +4,7 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/send.css') }}">
     <div class="form">
         <form action="{{ route('CivilProject-sendstore') }}" method="POST">
             @csrf

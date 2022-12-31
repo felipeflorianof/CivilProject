@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('nome', 55);
-            $table->integer('quantidade');
-            $table->string('marca', 55);
-            $table->text('complemento', 55);
-        });
+        DB::unprepared('
+            CREATE TRIGGER `AtualizaEstoque` AFTER INSERT ON `applicants`
+            FOR EACH ROW
+            update materials set quantidade = quantidade - new.quantidade where materials.id = new.materials_id;
+          ');
     }
 
     /**
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        DB::unprepared('DROP TRIGGER `AtualizaEstoque`');
     }
 };

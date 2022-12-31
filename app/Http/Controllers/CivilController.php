@@ -106,7 +106,7 @@ class CivilController extends Controller
             
             $applicants = Applicant::where([
 
-            ['created_at', 'like', '%'.$searchapplicants.'%']
+            ['funcionario', 'like', '%'.$searchapplicants.'%']
 
             ])->get();
 

@@ -5,6 +5,8 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/create.css') }}">
+
+<h4 class="card-title text-center">Insira as Informações abaixo do item que entrará no Estoque:</h4>
 <div class="form">
         <form action="{{ route('CivilProject-store') }}" method="POST">
             @csrf
