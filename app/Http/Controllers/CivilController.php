@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\Http\Exceptions\InvalidData;
 
 class CivilController extends Controller
 {
@@ -46,22 +47,6 @@ class CivilController extends Controller
         return redirect()->route('CivilProject-index')->with('msg', 'Item adicionado ao estoque!');
     }
 
-    public function sendstore(Request $request){
-
-        $applicants = new Applicant;
-
-        $applicants->nome = $request->nome;
-        $applicants->marca = $request->marca;
-        $applicants->funcionario = $request->funcionario;
-        $applicants->quantidade = $request->quantidade_solicitada;
-        $applicants->observacoes = $request->observacoes;
-        $applicants->materials_id = $request->id;
-
-        $applicants->save();
-        return redirect()->route('CivilProject-index')->with('msg', 'Registro Adicionado!');
-    }
-
-
     public function edit($id){
         $materials = Material::where('id', $id)->first();
 
@@ -96,6 +81,25 @@ class CivilController extends Controller
         }else{
             return redirect()->route('CivilProject-index');
         }
+    }
+
+    public function sendstore(Request $request){
+
+        try{
+            $applicants = new Applicant;
+            $applicants->nome = $request->nome;
+            $applicants->marca = $request->marca;
+            $applicants->funcionario = $request->funcionario;
+            $applicants->quantidade = $request->quantidade_solicitada;
+            $applicants->observacoes = $request->observacoes;
+            $applicants->materials_id = $request->id;
+            
+            $applicants->save();
+            return redirect()->route('CivilProject-index')->with('msg', 'Registro Adicionado!');   
+
+        }catch(\Exception $exception){
+            return  redirect()->route('CivilProject-index')->with('msgerror', '[Erro] Registro não adicionado!');;
+        }     
     }
 
     public function applicants(){
@@ -154,3 +158,4 @@ class CivilController extends Controller
     }
         
 }
+//https://www.devmedia.com.br/implementando-controle-de-estoque-no-mysql-com-triggers-e-procedures/26352

@@ -134,7 +134,14 @@ h1 {
   justify-content: space-evenly;
 }
 
+.datetitle{
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+
 .msg{
+  color: #000000;
   background-color: #D4EDDA;
   color: #155724;
   border: 1px solid #c3E6CB;
@@ -144,8 +151,12 @@ h1 {
   padding: 10px;
 }
 
-.datetitle{
+.msgerror{
+  color: #000000;
+  background-color: #edd4d4;
+  border: 1px solid #e6c3c3;
+  width: 500px;
+  margin: auto;
   text-align: center;
-  font-size: large;
-  font-weight: bold;
+  padding: 10px;
 }

@@ -12,15 +12,15 @@
             @csrf
                     <div class="form-group">
                         <label for="nome"><b>Nome</b></label>
-                        <input type="text" class="form-control" name="nome" placeholder="Nome do Material / Ferramenta">
+                        <input type="text" class="form-control" name="nome" placeholder="Nome do Material / Ferramenta" required>
                     </div>
                     <div class="form-group">
                         <label for="quantidade"><b>Quantidade</b></label>
-                        <input type="text" class="form-control" name="quantidade" placeholder="Quantidade do Material / Ferramenta">
+                        <input type="text" class="form-control" name="quantidade" placeholder="Quantidade do Material / Ferramenta" required>
                     </div>
                     <div class="form-group">
                         <label for="marca"><b>Marca</b></label>
-                        <input type="text" class="form-control" name="marca" placeholder="Marca do Material / Ferramenta">
+                        <input type="text" class="form-control" name="marca" placeholder="Marca do Material / Ferramenta" required>
                     </div>
                     <div class="form-group">
                         <label for="complemento"><b>Complemento</b></label>
