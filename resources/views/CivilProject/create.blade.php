@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/create.css') }}">
 
-<h4 class="card-title text-center">Insira as Informações abaixo do item que entrará no Estoque:</h4>
+<h4 class="card-title text-center">Insira as Informações do item que entrará no Estoque:</h4>
 <div class="form">
         <form action="{{ route('CivilProject-store') }}" method="POST">
             @csrf
@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="quantidade"><b>Quantidade</b></label>
-                        <input type="text" class="form-control" name="quantidade" placeholder="Quantidade do Material / Ferramenta" required>
+                        <input type="number" class="form-control" name="quantidade" placeholder="Quantidade do Material / Ferramenta" min="1" required>
                     </div>
                     <div class="form-group">
                         <label for="marca"><b>Marca</b></label>

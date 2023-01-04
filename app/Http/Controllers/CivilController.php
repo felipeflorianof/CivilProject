@@ -73,8 +73,13 @@ class CivilController extends Controller
         return redirect()->route('CivilProject-index');
     }
 
+    public function forceRemove($id){
+        Material::where('id', $id)->forcedelete();
+        return redirect()->route('CivilProject-query');
+    }
+
     public function send($id){
-        $materials = Material::where('id', $id)->first();
+        $materials = Material::where('id', $id)->firstOrFail();
 
         if(!empty($materials)){
             return view('CivilProject.send', ['materials' => $materials]);
@@ -98,7 +103,7 @@ class CivilController extends Controller
             return redirect()->route('CivilProject-index')->with('msg', 'Registro Adicionado!');   
 
         }catch(\Exception $exception){
-            return  redirect()->route('CivilProject-index')->with('msgerror', '[Erro] Registro não adicionado!');;
+            return  redirect()->route('CivilProject-index')->with('msgerror', '[Erro] Registro não adicionado!');
         }     
     }
 
@@ -150,12 +155,27 @@ class CivilController extends Controller
         return view('CivilProject.extra');
     }
 
+    public function query(){
+        $searchquery = request('searchquery');
 
+        if($searchquery){
+            
+            $materials = Material::where([
+
+            ['nome', 'like', '%'.$searchquery.'%']
+
+            ])->get();
+
+        }else{
+            $materials = Material::onlyTrashed()->get();
+        }
+        
+        return view('CivilProject.query', ['materials' => $materials, 'searchquery' => $searchquery]);
+    }
 
 
     public function notfound(){
-        return view('CivilProject.notfound');
+        return view('notfound');
     }
         
 }
-//https://www.devmedia.com.br/implementando-controle-de-estoque-no-mysql-com-triggers-e-procedures/26352

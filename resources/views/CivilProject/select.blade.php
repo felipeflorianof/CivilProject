@@ -4,6 +4,8 @@
 
 @section('content')
 
+<h4 class="card-title text-center">Lista da saida de itens do Estoque:</h4>
+
 <div id="search-container">
     <form action="/select" method="GET">
     <div class='box-div'>

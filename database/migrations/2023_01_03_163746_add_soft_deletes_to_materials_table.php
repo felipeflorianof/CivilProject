@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('applicants', function (Blueprint $table) {
-            $table->string('marca');
+        Schema::table('materials', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('applicants', function (Blueprint $table) {
-            $table->dropColumn('marca');
+        Schema::table('materials', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 };

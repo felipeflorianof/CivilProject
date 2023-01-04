@@ -4,6 +4,10 @@
 
 @section('content')
 
+    
+
+
+
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <div id="search-container">
     <form action="/" method="GET">
@@ -26,20 +30,37 @@
     <h3 class="card-title"><b>{{ $material->nome }}</b></h3>
     <p><b>Marca: </b>{{ $material->marca }}</p>
     <p><b>Quantidade: </b>{{ $material->quantidade }}</p>
-    <p><b>Data:</b> {{ date('d/m/y', strtotime($material->created_at)) }}</p>
+    <p><b>Data de Entrada:</b> {{ date('d/m/Y', strtotime($material->created_at)) }}</p>
     <p class="card-text">Para Saber mais detalhes deste item <a href="{{ route('CivilProject-info', ['id' => $material->id]) }}" class="link-primary">Clique aqui</a></p>
     <div class="acoes">
               <a href="{{ route('CivilProject-edit', ['id' => $material->id]) }}">
               <button class="btn btn-primary">Editar</button>
               </a>
 
-              <form action="{{ route('CivilProject-destroy', ['id' => $material->id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger">Remover</button>
-              </form>
+
+              <button id="open-modal" class="btn btn-danger">Excluir</button>
+            <div id="fade" class="hide"></div>
+                <div id="modal" class="hide">
+                    <div class="modal-header">
+                      <h5>Realmente deseja excluir esse registro?</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p class="text-center">Excluindo este registro, ele ainda ficará disponível.<br><b>( Não será excluido completamente! )</b><br> e você poderá encontrá-lo na aba 'Consultas'.</p>
+                      <div class="optionsModal">
+                        <form action="{{ route('CivilProject-destroy', ['id' => $material->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                          <button class="btn btn-success">Confirmar</button>
+                        </form>
+
+                          <button id="close-modal" class="btn btn-danger">Cancelar</button>
+                      </div>
+                    
+                  </div>
+              </div>
             </div>
   </div>
 </div>
 @endforeach
+<script src="{{ asset('JS/index.js') }}"></script>
 @endsection

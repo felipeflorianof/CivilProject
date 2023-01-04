@@ -14,7 +14,7 @@
     <p class="card-text"><b>Quantidade Inicial do Lote:</b> {{ $materials->quantidadeoriginal }}</p>
     <p class="card-text"><b>Quantidade Atual no Estoque:</b> {{ $materials->quantidade }}</p>
     <p class="card-text"><b>Complemento:</b> {{ $materials->complemento }}</p>
-    <p class="card-text"><small class="text-muted">Data de Entrada do item: {{ date('d/m/y', strtotime($materials->created_at)) }}</small></p>
+    <p class="card-text"><small class="text-muted">Data de Entrada do item: {{ date('d/m/Y', strtotime($materials->created_at)) }}</small></p>
 
   </div>
   </div>

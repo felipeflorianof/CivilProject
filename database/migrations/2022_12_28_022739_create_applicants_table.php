@@ -19,6 +19,11 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->integer('quantidade');
+            $table->string('funcionario');
+            $table->text('observacoes')->nullable();
+            $table->string('marca')->nullable();
+            $table->unsignedBigInteger('materials_id')->nullable();
+            $table->foreign('materials_id')->references('id')->on('materials')->nullOnDelete();
         });
     }
 

@@ -20,13 +20,16 @@ Route::get('/create', [CivilController::class, 'create'])->name('CivilProject-cr
 Route::post('/', [CivilController::class, 'store'])->name('CivilProject-store');
 Route::get('/edit/{id}', [CivilController::class, 'edit'])->where('id', '[0-9]+')->name('CivilProject-edit');
 Route::put('/{id}', [CivilController::class, 'update'])->where('id', '[0-9]+')->name('CivilProject-update');
-Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+')->name('CivilProject-destroy');
 Route::get('/send/{id}', [CivilController::class, 'send'])->where('id', '[0-9]+')->name('CivilProject-send');
 Route::post('/sendstore', [CivilController::class, 'sendstore'])->where('id', '[0-9]+')->name('CivilProject-sendstore');
 Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilProject-applicants');
 Route::get('/info/{id}', [CivilController::class, 'info'])->where('id', '[0-9]+')->name('CivilProject-info');
 Route::get('/select', [CivilController::class, 'select'])->name('CivilProject-select');
 Route::get('/extra', [CivilController::class, 'extra'])->name('CivilProject-extra');
+Route::get('/query', [CivilController::class, 'query'])->name('CivilProject-query');
+
+Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+')->name('CivilProject-destroy');
+Route::delete('/query/{id}', [CivilController::class, 'forceRemove'])->where('id', '[0-9]+')->name('CivilProject-forceRemove');
 
 Route::fallback([CivilController::class, 'notfound'])->name('CivilProject-notfound');
 

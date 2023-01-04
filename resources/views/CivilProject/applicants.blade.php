@@ -5,6 +5,9 @@
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/applicants.css') }}">
+
+<h4 class="card-title text-center">Lista de itens retirados do Estoque</h4>
+
 <div id="search-container">
     <form action="/applicants" method="GET">
     <div class='box-div'>

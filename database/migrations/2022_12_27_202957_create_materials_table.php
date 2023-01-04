@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome', 55);
-            $table->integer('quantidade');
-            $table->string('marca', 55);
-            $table->text('complemento', 55);
+            $table->integer('quantidade')->unsigned();
+            $table->string('marca', 55)->nullable();
+            $table->text('complemento', 55)->nullable();
+            $table->boolean('type');
+            $table->integer('quantidadeoriginal');
         });
     }
 
