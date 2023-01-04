@@ -7,10 +7,11 @@
 
 <h4 class="card-title text-center">Insira as Informações do Funcionário</h4>
 
-<form action="#" class="form">
+<form action="{{ route('CivilProject-extrastore') }}" method="POST" class="form">
+@csrf
 
     <div>
-        <p><b>Funcionário:</b><input type="text" name="entrada" id="entrada" class="form-control w-50" required placeholder="Nome do Funcionário"></p>
+        <p><b>Funcionário:</b><input type="text" name="funcionario" id="funcionario" class="form-control w-50" required placeholder="Nome do Funcionário"></p>
     </div>
 
     <div>

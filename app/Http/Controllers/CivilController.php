@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\ExtraHour;
 use App\Models\Material;
 use Illuminate\Http\Request;
 use Spatie\FlareClient\Http\Exceptions\InvalidData;
@@ -45,6 +46,16 @@ class CivilController extends Controller
 
         $materials->save();
         return redirect()->route('CivilProject-index')->with('msg', 'Item adicionado ao estoque!');
+    }
+
+    public function extrastore(Request $request){
+        $extrahours = new ExtraHour;
+        $extrahours->funcionario = $request->funcionario;
+        $extrahours->entrada = $request->entrada;
+        $extrahours->saida = $request->saida;
+
+        $extrahours->save();
+        return redirect()->route('CivilProject-extra')->with('msg', 'Registro de Hora Extra adicionado!');
     }
 
     public function edit($id){
