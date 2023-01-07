@@ -28,6 +28,7 @@
                 <th scope="col">Quantidade Atual</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Complemento</th>
+                <th scope="col">Data de Entrada</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -41,6 +42,7 @@
                       <td>{{ $material->quantidade }}</td>
                       <td>{{ $material->marca }}</td>
                       <td>{{ $material->complemento }}</td>
+                      <td>{{ date('d/m/Y', strtotime($material->created_at)) }}</td>
                       <td><button type="button" class="btn btn-danger deletebtn">Deletar</button></td>
                     <td>
                     </td>

@@ -1,10 +1,12 @@
 @extends('Layouts.main')
 @section('title')
-@section('subtitulo', 'Edite o item')
+@section('subtitulo')
 
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
+
+<h4 class="card-title text-center">Edite as Informações do item abaixo:</h4>
 <div class="form">
     <form action="{{ route('CivilProject-update', ['id' => $materials->id]) }}" method="POST">
         @csrf
@@ -34,7 +36,7 @@
                             </select>
                     </div>
                 <div class="form-group">
-                    <input type="submit" name="submit" value="Atualizar" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Editar" class="btn btn-primary">
                 </div>
             </div>
     </form>

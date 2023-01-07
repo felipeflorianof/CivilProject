@@ -52,14 +52,8 @@
 
 <!--Layout Dinâmico-->
 <section class="container2">
-<h3 class="Subtitulo"><b>@yield('subtitulo', 'Melo Leal')</b></h3>
 <hr class="hr-3">
-@if(session('msg'))
-    <p class="msg">{{ session('msg') }}</p>
-@elseif(session('msgerror'))
-    <p class="msgerror">{{ session('msgerror') }}</p>  
-@endif
-<br><br>
+
 @yield('content')
 
 

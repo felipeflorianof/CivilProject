@@ -4,7 +4,9 @@
 
 @section('content')
 
-<h4 class="card-title text-center">Lista da saida de itens do Estoque:</h4>
+<h4 class="card-title text-center layoutText">Lista da saida de itens do Estoque:</h4>
+<div class="layout">
+
 
 <div id="search-container">
     <form action="/select" method="GET">
@@ -19,7 +21,7 @@
     </form>
 </div>
 
-<table class="table table-bordered table-dark">
+<table class="table table-bordered table-sm table-dark">
             <thead class="thead-dark">
               <tr>
                 <th></th>
@@ -27,6 +29,7 @@
                 <th scope="col">Quantidade Atual</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Complemento</th>
+                <th scope="col">Data de Entrada</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -39,6 +42,7 @@
                       <td>{{ $material->quantidade }}</td>
                       <td>{{ $material->marca }}</td>
                       <td>{{ $material->complemento }}</td>
+                      <td>{{ date('d/m/Y', strtotime($material->created_at)) }}</td>
                       <td><a href="{{ route('CivilProject-send', ['id' => $material->id]) }}" class="btn btn-success">Encaminhar</a></td>
                     <td>
                     </td>
@@ -46,5 +50,5 @@
                 @endforeach
             </tbody>
           </table>
-
+</div>
 @endsection

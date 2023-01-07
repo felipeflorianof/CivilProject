@@ -1,23 +1,32 @@
 @extends('Layouts.main')
 @section('title')
-@section('subtitulo', 'Estoque')
 
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-<div id="search-container">
-    <form action="/" method="GET">
-    <div class='box-div'>
-            <div class='box-search'>
-                <form action="/" method="get"><input type='search' class='form-control text-center' placeholder='Pesquise o item que deseja Encontrar' id='pesquisar' name="search"></form>   
-                <button class='btn btn-primary'>
-                    <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-                    <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
-                </button>
-            </div>
-    </form>
-</div>
-</div>
+  <div id="search-container">
+      <form action="/" method="GET">
+      <div class='box-div'>
+              <div class='box-search'>
+
+                  <form action="/" method="get"><input type='search' class='form-control text-center' placeholder='Pesquise o item que deseja Encontrar' id='pesquisar' name="search"></form>   
+
+                  <button class='btn btn-primary'>
+                      <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
+                      <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
+                  </button>
+              </div>
+              <select class="ml-auto inputStyles form-control orderby">
+                      <option value="" disabled="">Ordernar Por</option>
+                      <option value="min-date" class="bg-slate-100 dark:bg-slate-800">Adicionado Primeiro</option>
+                      <option value="max-date" class="bg-slate-100 dark:bg-slate-800">Adicionado Por último</option>
+                      <option value="completed-first" class="bg-slate-100 dark:bg-slate-800">Baixo Estoque</option>
+                      <option value="uncompleted-first" class="bg-slate-100 dark:bg-slate-800">Alto Estoque</option>
+                  </select>
+      </form>
+  </div>
+  </div>
+
 
 
 @foreach($materials as $material)
@@ -39,8 +48,6 @@
     </div>
   </div>
 </div>
-
-
 
 @endforeach
 @endsection

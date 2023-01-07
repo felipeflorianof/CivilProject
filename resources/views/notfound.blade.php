@@ -9,18 +9,22 @@
     <title>Página não encontrada!</title>
 </head>
 <body>
-
+<h1>Página não encontrada!</h1><br><br>
 <img width="759" height="272" src="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png" class="elementor-animation-bob attachment-large size-large" alt="" srcset="https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2.png 759w, https://meloleal.com.br/wp-content/uploads/2020/07/logo_site_2-300x108.png 300w" sizes="(max-width: 759px) 100vw, 759px">
 
 
-    <a data-i18n="[html]404_MeloLeal_page.button" href="/" class="btn btn-primary mb-3 mb-lg-4 text-center">Voltar ao sistema</a>
-
-<div class="container">
+<div class="error">404</div>
+    <div class="container">
         <div class="col-md-8 float-sm-none mx-auto">
-            <div class="alert alert-info text-xs-left mb-4">
-                <p data-i18n="[html]404_MeloLeal_page.error_help">Me deixe lhe dar um conselho: Verifique se a URL está correta. É bem importante, Meu caro, que você não utilize espaços, caractéres especiais ou letras maiúsculas. Os mínimos detalhes são sempre os mais importantes!</p>
+            <div class="alert alert-info text-xs-left mb-4 text-center">
+                <p data-i18n="[html]404_MeloLeal_page.error_help">Me deixe lhe dar um conselho: Verifique se a URL está correta. É bem importante que você não utilize espaços, caractéres especiais ou letras maiúsculas.<br> Os mínimos detalhes são sempre os mais importantes!</p>
             </div>
         </div>
     </div>
+
+<div class="back">
+    <a data-i18n="[html]404_MeloLeal_page.button" href="/" class="btn btn-primary mb-3 mb-lg-4 text-center">Voltar ao sistema</a>
+</div>
+
 
 

@@ -1,6 +1,5 @@
 @extends('Layouts.main')
 @section('title')
-@section('subtitulo', 'Entrada de itens')
 
 @section('content')
 

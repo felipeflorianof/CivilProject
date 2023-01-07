@@ -133,7 +133,18 @@
     width: 800px;
   }
 
-  .form{
-    margin-top: 30px;
+  h4{
+    background-color: darkslateblue;
+    color: white;
+    font-family: monospace;
+    width: 960px;
     margin-left: 40px;
-  }
+    margin-bottom: 10px;
+    padding: 20px;
+}
+.form{
+    margin-left: 40px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 1px 1px 2px black;
+}
