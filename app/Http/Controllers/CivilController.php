@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\ExtraHour;
 use App\Models\Material;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Spatie\FlareClient\Http\Exceptions\InvalidData;
 
@@ -45,7 +46,7 @@ class CivilController extends Controller
         $materials->quantidadeoriginal = $request->quantidade;
 
         $materials->save();
-        return redirect()->route('CivilProject-index')->with('msg', 'Item adicionado ao estoque!');
+        return redirect()->route('CivilProject-index')->withSuccessMessage('Item Adicionado ao Estoque!');
     }
 
     public function extrastore(Request $request){
@@ -55,7 +56,7 @@ class CivilController extends Controller
         $extrahours->saida = $request->saida;
 
         $extrahours->save();
-        return redirect()->route('CivilProject-extra')->with('msg', 'Registro de Hora Extra adicionado!');
+        return redirect()->route('CivilProject-extra')->withSuccessMessage('Hora Extra Contabilizada!');
     }
 
     public function edit($id){
@@ -75,18 +76,20 @@ class CivilController extends Controller
             'complemento' => $request->complemento
         ];
         Material::where('id', $id)->update($data);
-        return redirect()->route('CivilProject-index')->with('msg', 'Item editado com sucesso!');
+        return redirect()->route('CivilProject-index')->withSuccessMessage('Item editado com sucesso!');
     }
     
 
-    public function destroy($id){
-        Material::where('id', $id)->delete();
-        return redirect()->route('CivilProject-index');
-    }
-
-    public function forceRemove($id){
-        Material::where('id', $id)->forcedelete();
-        return redirect()->route('CivilProject-query');
+ 
+    public function SoftDeleteAndForceDelete($id){
+        $materials = Material::withTrashed()->findOrFail($id);
+        if($materials->deleted_at == null){
+            $materials->delete();
+          }
+        else {
+            $materials->forceDelete();
+        }
+          return response()->json(['status' => 'item Deleted Successfully!']);
     }
 
     public function send($id){
@@ -111,10 +114,10 @@ class CivilController extends Controller
             $applicants->materials_id = $request->id;
             
             $applicants->save();
-            return redirect()->route('CivilProject-index')->with('msg', 'Registro Adicionado!');   
+            return redirect()->route('CivilProject-index')->withSuccessMessage('Novo Registro Adicionado!'); 
 
         }catch(\Exception $exception){
-            return  redirect()->route('CivilProject-index')->with('msgerror', '[Erro] Registro não adicionado!');
+            return  redirect()->route('CivilProject-index')->withErrorMessage('Algo deu Errado, Registro não concluido.');
         }     
     }
 
@@ -163,7 +166,8 @@ class CivilController extends Controller
 
 
     public function extra(){
-        return view('CivilProject.extra');
+        $extra = ExtraHour::all();
+        return view('CivilProject.extra', ['extra' => $extra]);
     }
 
     public function query(){
@@ -187,6 +191,10 @@ class CivilController extends Controller
 
     public function notfound(){
         return view('notfound');
+    }
+
+    public function welcome(){
+        return view('welcome');
     }
         
 }

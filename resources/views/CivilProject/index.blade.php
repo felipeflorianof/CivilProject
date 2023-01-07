@@ -4,10 +4,6 @@
 
 @section('content')
 
-    
-
-
-
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <div id="search-container">
     <form action="/" method="GET">
@@ -23,10 +19,13 @@
 </div>
 </div>
 
+
 @foreach($materials as $material)
+
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/img/pexels-jeshootscom-834892.jpg" alt="Card image cap">
   <div class="card-body">
+  <input type="hidden" class="serdelete_val_id" value="{{ $material->id }}">
     <h3 class="card-title"><b>{{ $material->nome }}</b></h3>
     <p><b>Marca: </b>{{ $material->marca }}</p>
     <p><b>Quantidade: </b>{{ $material->quantidade }}</p>
@@ -36,31 +35,66 @@
               <a href="{{ route('CivilProject-edit', ['id' => $material->id]) }}">
               <button class="btn btn-primary">Editar</button>
               </a>
-
-
-              <button id="open-modal" class="btn btn-danger">Excluir</button>
-            <div id="fade" class="hide"></div>
-                <div id="modal" class="hide">
-                    <div class="modal-header">
-                      <h5>Realmente deseja excluir esse registro?</h5>
-                    </div>
-                    <div class="modal-body">
-                      <p class="text-center">Excluindo este registro, ele ainda ficará disponível.<br><b>( Não será excluido completamente! )</b><br> e você poderá encontrá-lo na aba 'Consultas'.</p>
-                      <div class="optionsModal">
-                        <form action="{{ route('CivilProject-destroy', ['id' => $material->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                          <button class="btn btn-success">Confirmar</button>
-                        </form>
-
-                          <button id="close-modal" class="btn btn-danger">Cancelar</button>
-                      </div>
-                    
-                  </div>
-              </div>
-            </div>
+              <button type="button" class="btn btn-danger servideletebtn">Arquivar</button>
+    </div>
   </div>
 </div>
+
+
+
 @endforeach
-<script src="{{ asset('JS/index.js') }}"></script>
+@endsection
+
+@section('scripts')
+
+  <script>
+
+    $(document).ready(function () {
+
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      
+      $('.servideletebtn').click(function (e) { 
+
+        var delete_id = $(this).closest("div.card-body").find('.serdelete_val_id').val();
+        //alert(delete_id);
+
+          Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Esse item sairá do estoque! Porém você ainda poderá ter acesso ao registro na aba 'Arquivos'.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, Arquivar!',
+            cancelButtonText: 'Cancelar'
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              var data = {
+                  "_token": $('input[name="csrf-token"]').val(),
+                  "id": delete_id,
+              };
+              $.ajax({
+                type: "DELETE",
+                url: '/'+delete_id,
+                data: "data",
+                success: function (response) {
+                  Swal.fire(
+                    'Arquivado!',
+                    'Seu Registro foi Arquivado.',
+                    'success',
+                  ).then((result) =>{
+                    window.location.reload();
+                  });
+                }
+              });  
+            }
+          })
+      });
+    });
+  </script>
 @endsection

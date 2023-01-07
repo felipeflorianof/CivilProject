@@ -22,58 +22,84 @@
 <table class="table table-bordered table-dark">
             <thead class="thead-dark">
               <tr>
+              
                 <th></th>
                 <th scope="col">Nome do item</th>
                 <th scope="col">Quantidade Atual</th>
-                <th scope="col">Quantidade de Entrada</th>
                 <th scope="col">Marca</th>
                 <th scope="col">Complemento</th>
-                <th scope="col">Data de Entrada</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
-                @foreach($materials as $material)
+                @foreach($materials as $material) 
                     <tr>
+                    <input type="hidden" class="delete_val_id" value="{{ $material->id }}">
                     <td>
                     </td>
                       <td>{{ $material->nome }}</td>
                       <td>{{ $material->quantidade }}</td>
-                      <td>{{ $material->quantidadeoriginal }}</td>
                       <td>{{ $material->marca }}</td>
                       <td>{{ $material->complemento }}</td>
-                      <td>{{ date('d/m/Y', strtotime($material->created_at)) }}</td>
-                      <td class="tdModal">
-
-
-                        <button id="open-modal" class="btn btn-danger">Excluir</button>
-                            <div id="fade" class="hide"></div>
-                                <div id="modal" class="hide">
-                                    <div class="modal-header">
-                                      <h5>Realmente deseja excluir esse registro?</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                      <p class="text-center">Excluindo este registro, ele <b>NÃO</b> ficará mais disponível.<br><b>( SERÁ EXCLUIDO COMPLETAMENTE )</b><br> e você  não terá mais acesso a esses dados.</p>
-                                      <div class="optionsModal">
-                                        <form action="{{ route('CivilProject-forceRemove', ['id' => $material->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                          <button class="btn btn-success">Confirmar</button>
-                                        </form>
-
-                                          <button id="close-modal" class="btn btn-danger">Cancelar</button>
-                                      </div>
-                                    
-                                  </div>
-                              </div>
-
-
-                              
-                      </td>
+                      <td><button type="button" class="btn btn-danger deletebtn">Deletar</button></td>
                     <td>
                     </td>
                     </tr>
                 @endforeach
             </tbody>
           </table>
+@endsection
+
+@section('scripts')
+
+  <script>
+
+    $(document).ready(function () {
+
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      
+      $('.deletebtn').click(function (e) { 
+
+        var delete_id = $(this).closest("tr").find('.delete_val_id').val();
+        //alert(delete_id);
+
+          Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Esse registro será excluido completamente! você não terá mais acesso a esses dados.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar!',
+            cancelButtonText: 'Cancelar'
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              var data = {
+                  "_token": $('input[name="csrf-token"]').val(),
+                  "id": delete_id,
+              };
+              $.ajax({
+                type: "DELETE",
+                url: '/query/'+delete_id,
+                data: "data",
+                success: function (response) {
+                  Swal.fire(
+                    'Deletado!',
+                    'Seu Registro foi deletado.',
+                    'success',
+                  ).then((result) =>{
+                    window.location.reload();
+                  });
+                }
+              });  
+            }
+          })
+      });
+    });
+  </script>
 @endsection

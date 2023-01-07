@@ -29,8 +29,9 @@ Route::get('/extra', [CivilController::class, 'extra'])->name('CivilProject-extr
 Route::post('/extrastore', [CivilController::class, 'extrastore'])->name('CivilProject-extrastore');
 Route::get('/query', [CivilController::class, 'query'])->name('CivilProject-query');
 
-Route::delete('/{id}', [CivilController::class, 'destroy'])->where('id', '[0-9]+')->name('CivilProject-destroy');
-Route::delete('/query/{id}', [CivilController::class, 'forceRemove'])->where('id', '[0-9]+')->name('CivilProject-forceRemove');
+
+Route::delete('/{id}', [CivilController::class, 'SoftDeleteAndForceDelete'])->where('id', '[0-9]+')->name('CivilProject-SoftDeleteAndForceDelete');
+Route::delete('/query/{id}', [CivilController::class, 'SoftDeleteAndForceDelete'])->where('id', '[0-9]+')->name('CivilProject-SoftDeleteAndForceDelete');
 
 Route::fallback([CivilController::class, 'notfound'])->name('CivilProject-notfound');
 
