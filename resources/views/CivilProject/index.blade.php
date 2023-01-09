@@ -2,8 +2,8 @@
 @section('title')
 
 @section('content')
-
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
   <div id="search-container">
       <form action="/" method="GET">
       <div class='box-div'>
@@ -16,18 +16,11 @@
                       <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
                   </button>
               </div>
-              <select class="ml-auto inputStyles form-control orderby">
-                      <option value="" disabled="">Ordernar Por</option>
-                      <option value="min-date" class="bg-slate-100 dark:bg-slate-800">Adicionado Primeiro</option>
-                      <option value="max-date" class="bg-slate-100 dark:bg-slate-800">Adicionado Por último</option>
-                      <option value="completed-first" class="bg-slate-100 dark:bg-slate-800">Baixo Estoque</option>
-                      <option value="uncompleted-first" class="bg-slate-100 dark:bg-slate-800">Alto Estoque</option>
-                  </select>
       </form>
   </div>
   </div>
 
-
+  <div class="pai-index">
 
 @foreach($materials as $material)
 
@@ -50,14 +43,13 @@
 </div>
 
 @endforeach
+</div>
 @endsection
 
 @section('scripts')
 
   <script>
-
     $(document).ready(function () {
-
       $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -65,10 +57,8 @@
       });
       
       $('.servideletebtn').click(function (e) { 
-
         var delete_id = $(this).closest("div.card-body").find('.serdelete_val_id').val();
         //alert(delete_id);
-
           Swal.fire({
             title: 'Você tem certeza?',
             text: "Esse item sairá do estoque! Porém você ainda poderá ter acesso ao registro na aba 'Arquivos'.",
@@ -78,7 +68,6 @@
             cancelButtonColor: '#d33',
             confirmButtonText: 'Sim, Arquivar!',
             cancelButtonText: 'Cancelar'
-
           }).then((result) => {
             if (result.isConfirmed) {
               var data = {

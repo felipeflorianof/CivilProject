@@ -20,7 +20,7 @@
         <p><b>Saida</b><input type="time" name="saida" id="saida" class="form-control w-25" required></p>
     </div>
     <div class="form-group">
-        <input type="submit" name="submit" value="Enviar" class="btn btn-success">
+        <input type="submit" name="submit" value="Enviar" class="btn btn-primary">
     </div>
 </form>
 @endsection

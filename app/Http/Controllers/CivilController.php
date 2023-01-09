@@ -24,7 +24,7 @@ class CivilController extends Controller
             ])->get();
 
         }else{
-            $materials = Material::all();
+            $materials = Material::all()->sortByDesc('created_at');
         }
         
         return view('CivilProject.index', ['materials' => $materials, 'search' => $search]);
@@ -114,10 +114,10 @@ class CivilController extends Controller
             $applicants->materials_id = $request->id;
             
             $applicants->save();
-            return redirect()->route('CivilProject-index')->withSuccessMessage('Novo Registro Adicionado!'); 
+            return redirect()->route('CivilProject-index')->withSuccessMessage('Novo Registro de Solicitação Adicionado!'); 
 
         }catch(\Exception $exception){
-            return  redirect()->route('CivilProject-index')->withErrorMessage('Algo deu Errado, Registro não concluido.');
+            return  redirect()->route('CivilProject-index')->withErrorMessage('Algo deu Errado, Registro de Solicitação não concluido.');
         }     
     }
 

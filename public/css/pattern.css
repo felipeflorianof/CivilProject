@@ -1,3 +1,4 @@
+
 * {
   font-family: Helvetica;
   padding: 0;
@@ -13,7 +14,7 @@ h3{
     margin-left: 10px;
 }
 .hr{
-    width: 300px;
+    width: 275px;
 }
 
 .hr-2{
@@ -21,7 +22,7 @@ h3{
 }
 
 .hr-3{
-    width: 1000px;
+  width: 1000px;
 }
 
 .container{
@@ -30,23 +31,24 @@ h3{
     margin-right: 0;
     margin-top: 5px;
     margin-bottom: 5px;
+    width: 235px;
 }
 
 .container2{
     text-align: left;
-    margin-left: 0;
+    margin-left: 300px;
     margin-right: 0;
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
 .opcoes{
-    background-color: #e8e8e5;
+    background-color: none;
     color: #000000;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 2px;
-    width: 300px;
+    width: 235px;
     font-weight: bold;
     cursor: pointer;
     padding: 10px;
@@ -70,20 +72,25 @@ h3{
 
 .pai{
     display: flex;
+    
 }
 
 .pai-container{
-    width: 330px;
-    margin-left: 0;
-    border-right: 1px solid #a0a0a052;
-    height: auto;
-    min-height: 1000px;
+  width: 300px;
+  margin-left: -25px;
+  height: auto;
+  min-height: 1000px;
+  border-right: 1px solid #a0a0a052;
+  position: fixed;
+}
+
+.pai-cards{
+display: flex;
 }
 
 .card{
     top:0px;
     bottom:0px;
-    display: inline-block;
     margin: 30px;
 }
 
@@ -122,6 +129,7 @@ button{
 } 
 
 body {
+  padding-top: 60px;
   padding: 1rem;
   background-color: #e8e8e5;
 }
@@ -159,7 +167,7 @@ footer a{
 }
 
 .layoutText{
-  background-color: darkslateblue;
+  background-color: rgb(102, 101, 109);
   color: white;
   font-family: monospace;
   width: 960px;
