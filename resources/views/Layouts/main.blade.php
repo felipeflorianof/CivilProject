@@ -68,7 +68,7 @@
 </section>
 <!--Fim do Layout Dinâmico-->
 
-<!--<footer class="footer navbar-fixed-bottom"><a href="https://github.com/felipeflorianof" target="_blank">&copy; Developed by FF</a></footer>-->
+<footer class="footer navbar-fixed-bottom"><a href="https://github.com/felipeflorianof" target="_blank">&copy; Developed by felipeflorianof</a></footer>
 @include('sweetalert::alert')
 <script src="{{ asset('JS/pattern.js') }}"></script>
 @yield('scripts')

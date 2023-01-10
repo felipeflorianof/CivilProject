@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('funcionario');
-            $table->time('Entrada');
-            $table->time('Saida');
+            $table->time('entrada');
+            $table->time('saida');
         });
     }
 
