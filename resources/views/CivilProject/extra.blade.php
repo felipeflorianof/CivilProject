@@ -30,10 +30,9 @@
 
 <div class="form">
 
-  <table class="table table-bordered table-sm table-dark">
+  <table id="myTable" class="table table-bordered table-sm table-dark">
           <thead class="thead-dark">
             <tr>
-              <th></th>
               <th scope="col">Funcionario</th>
               <th scope="col">Entrada</th>
               <th scope="col">Saida</th>
@@ -43,18 +42,29 @@
           <tbody>
               @foreach($extra as $extra)
                   <tr>
-                  <td>
-                  </td>
                     <td>{{ $extra->funcionario }}</td>
                     <td>{{ $extra->entrada }}</td>
                     <td>{{ $extra->saida }}</td>
                     <td>{{ date('d/m/Y', strtotime($extra->created_at)) }}</td>
-                  <td>
-                  </td>
                   </tr>
               @endforeach
           </tbody>
     </table>
 </div>
 
+@endsection
+
+@section('scripts')
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready( function () {
+        $('#myTable').DataTable({
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json",
+          },
+          responsive: true,
+          lengthMenu: [ 5, 10, 15, 20, 30, 50, 100 ]
+        })
+      });
+    </script>
 @endsection

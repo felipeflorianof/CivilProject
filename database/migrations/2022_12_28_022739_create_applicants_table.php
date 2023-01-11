@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('marca')->nullable();
             $table->unsignedBigInteger('materials_id')->nullable();
             $table->foreign('materials_id')->references('id')->on('materials')->nullOnDelete();
+            $table->integer('devolvido')->nullable();
+            $table->text('mais_observacoes')->nullable();
+            $table->date('data_devolucao')->nullable();
         });
     }
 

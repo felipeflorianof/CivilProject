@@ -1,67 +1,56 @@
 @extends('Layouts.main')
-
 @section('title')
-@section('subtitulo', 'Solicitações dos Funcionários')
+
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('css/applicants.css') }}">
-
 <h4 class="card-title text-center">Lista de itens retirados do Estoque</h4>
 
 <div class="form">
-  <div id="search-container">
-      <form action="/applicants" method="GET">
-      <div class='box-div'>
-              <div class='box-search'>
-                  <form action="/applicants" method="get"><input type='search' class='form-control text-center' placeholder='Pesquise pela Data / Nome do Funcionário ou item' id='pesquisar' name="searchapplicants"></form>   
-                  <button class='btn btn-primary'>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-                      <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
-                  </button>
-              </div>
-      </form>
-  </div>
-
-  <table class="table table-bordered table-sm table-dark">
+  <table id="myTable" class="table table-bordered table-sm table-dark text-center">
     <thead class="thead-dark">
-      <tr>
-        <th></th>
-        
-        <th scope="col">Solicitantes</th>
-        <th scope="col">item</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Observações</th>
-        <th scope="col">Retirada</th>
-        <th scope="col">Devolução</th>
-        <th scope="col">qtd Devolução</th>
-        <th scope="col">Devolver</th>
-
-        <th></th>
-    
+      <tr>     
+        <th class="text-center" scope="col">Funcionário</th>
+        <th class="text-center" scope="col">item</th>
+        <th class="text-center" scope="col">Marca</th>
+        <th class="text-center" scope="col">Pegou</th>
+        <th class="text-center" scope="col">Devolveu</th>
+        <th class="text-center" scope="col">Retirada</th>
+        <th class="text-center" scope="col">Devolução</th>
+        <th class="text-center" scope="col">Observações</th>
+        <th class="text-center" scope="col">Devolver</th>
       </tr>
     </thead>
     <tbody>
     
     @foreach($applicants as $applicant)
       <tr>
-        <td></td>
-
         <td>{{ $applicant->funcionario }}</td>
         <td>{{ $applicant->nome }}</td>
-        <td>{{ $applicant->quantidade }}</td>
         <td>{{ $applicant->marca }}</td>
-        <td>{{ $applicant->observacoes }}</td>
-        <td>{{ date('d/m/y', strtotime($applicant->created_at)) }}</td>
-        <td>--/--/--</td>
-        <td>-</td>
-        <td><a href="#" class="btn btn-success">Devolver</a></td>
-
-        <td></td>
-    
+        <td>{{ $applicant->quantidade }}</td>
+        <td>{{ $applicant->devolvido }}</td>
+        <td>{{ date('d/m/Y', strtotime($applicant->created_at)) }}</td>
+        <td>{{ date('d/m/Y', strtotime($applicant->data_devolucao)) }}</td>
+        <td>{{ $applicant->mais_observacoes }}</td>
+        <td><a href="{{ route('CivilProject-return', ['id' => $applicant->id]) }}" class="btn btn-success">Devolver</a></td>
       </tr>
     @endforeach
     </tbody>
   </table>
 
+@endsection
+
+@section('scripts')
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script>
+  $(document).ready( function () {
+        $('#myTable').DataTable({
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json",
+          },
+          lengthMenu: [ 5, 10, 15, 20, 30, 50, 100 ]
+        })
+  });
+  </script>
 @endsection

@@ -46,7 +46,7 @@ class CivilController extends Controller
         $materials->quantidadeoriginal = $request->quantidade;
 
         $materials->save();
-        return redirect()->route('CivilProject-index')->withSuccessMessage('Item Adicionado ao Estoque!');
+        return redirect()->route('CivilProject-create')->withSuccessMessage('Item Adicionado ao Estoque!');
     }
 
     public function extrastore(Request $request){
@@ -103,7 +103,6 @@ class CivilController extends Controller
     }
 
     public function sendstore(Request $request){
-
         try{
             $applicants = new Applicant;
             $applicants->nome = $request->nome;
@@ -118,50 +117,22 @@ class CivilController extends Controller
 
         }catch(\Exception $exception){
             return  redirect()->route('CivilProject-index')->withErrorMessage('Algo deu Errado, Registro de Solicitação não concluido.');
-        }     
+        }      
     }
 
     public function applicants(){
-
-        $searchapplicants = request('searchapplicants');
-
-        if($searchapplicants){
-            
-            $applicants = Applicant::where([
-
-            ['funcionario', 'like', '%'.$searchapplicants.'%']
-
-            ])->get();
-
-        }else{
-            $applicants = Applicant::all();
-        }
-
-        return view('CivilProject.applicants', ['applicants' => $applicants, 'searchapplicants' => $searchapplicants]);
+        $applicants = Applicant::all();
+        return view('CivilProject.applicants', ['applicants' => $applicants]);
     }
 
     public function info($id){
        $materials = material::findOrFail($id);
-
        return view('CivilProject.info', ['materials' => $materials]);
     }
 
     public function select(){
-        $searchselect = request('searchselect');
-
-        if($searchselect){
-            
-            $materials = Material::where([
-
-            ['nome', 'like', '%'.$searchselect.'%']
-
-            ])->get();
-
-        }else{
-            $materials = Material::all();
-        }
-        
-        return view('CivilProject.select', ['materials' => $materials, 'search' => $searchselect]);
+        $materials = Material::all();
+        return view('CivilProject.select', compact('materials'));
     }
 
 
@@ -171,30 +142,33 @@ class CivilController extends Controller
     }
 
     public function query(){
-        $searchquery = request('searchquery');
-
-        if($searchquery){
-            
-            $materials = Material::where([
-
-            ['nome', 'like', '%'.$searchquery.'%']
-
-            ])->get();
-
-        }else{
-            $materials = Material::onlyTrashed()->get();
-        }
-        
-        return view('CivilProject.query', ['materials' => $materials, 'searchquery' => $searchquery]);
+        $materials = Material::onlyTrashed()->get();
+        return view('CivilProject.query', ['materials' => $materials]);
     }
-
 
     public function notfound(){
         return view('notfound');
     }
 
-    public function welcome(){
-        return view('welcome');
+    public function return($id){
+        $materials = new Material;
+        $applicants = Applicant::where('id', $id)->first();
+        return view('CivilProject.return', ['materials' => $materials, 'applicants' => $applicants]);
+    }
+
+    public function updateRequest(Request $request, $id){
+        $data = [
+            'nome' => $request->nome,
+            'quantidade' => $request->quantidade_solicitada,
+            'funcionario' => $request->funcionario,
+            'observacoes' => $request->observacoes,
+            'marca' => $request->marca,
+            'devolvido' => $request->devolvido,
+            'mais_observacoes' => $request->mais_observacoes,
+            'data_devolucao' => $request->data_devolucao 
+        ];
+        Applicant::where('id', $id)->update($data);
+        return redirect()->route('CivilProject-applicants')->withSuccessMessage('Registro Atualizado com sucesso!');
     }
         
 }

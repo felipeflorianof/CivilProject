@@ -1,6 +1,5 @@
 @extends('Layouts.main')
 @section('title')
-@section('subtitulo', 'Consulta de Registros')
 
 @section('content')
 
@@ -10,27 +9,9 @@
 <h4 class="text-center">Registros Arquivados</h4>
 
 <div class="form">
-
-  <div id="search-container">
-      <form action="/query" method="GET">
-      <div class='box-div'>
-              <div class='box-search'>
-                  <form action="/query" method="get"><input type='search' class='form-control text-center' placeholder='Pesquise o item que deseja Encontrar' id='pesquisar' name="searchquery"></form>   
-                  <button class='btn btn-primary'>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-                      <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/></svg>
-                  </button>
-              </div>
-      </form>
-  </div>
-  </div>
-
-
-    <table class="table table-bordered table-sm table-dark">
+    <table id="myTable" class="table table-bordered table-sm table-dark">
         <thead class="thead-dark">
                 <tr>
-                
-                  <th></th>
                   <th scope="col">Nome do item</th>
                   <th scope="col">Quantidade Atual</th>
                   <th scope="col">Marca</th>
@@ -43,16 +24,12 @@
                   @foreach($materials as $material) 
                       <tr>
                       <input type="hidden" class="delete_val_id" value="{{ $material->id }}">
-                      <td>
-                      </td>
                         <td>{{ $material->nome }}</td>
                         <td>{{ $material->quantidade }}</td>
                         <td>{{ $material->marca }}</td>
                         <td>{{ $material->complemento }}</td>
                         <td>{{ date('d/m/Y', strtotime($material->created_at)) }}</td>
                         <td><button type="button" class="btn btn-danger deletebtn">Deletar</button></td>
-                      <td>
-                      </td>
                       </tr>
                   @endforeach
               </tbody>
@@ -61,8 +38,18 @@
 </div>
 
 @section('scripts')
-
+<script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
   <script>
+
+      $(document).ready( function () {
+        $('#myTable').DataTable({
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/pt-BR.json",
+          },
+          responsive: true,
+          lengthMenu: [ 5, 10, 15, 20, 30, 50, 100 ]
+        })
+      });
 
     $(document).ready(function () {
 

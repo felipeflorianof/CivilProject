@@ -23,8 +23,8 @@
                         <input type="text" readonly class="form-control" name="complemento" value="{{ $materials->quantidade }}">
                     </div>
                     <div class="form-group">
-                        <label for="funcionario"><b>Nome do Solicitante:</b></label>
-                        <input type="text" class="form-control" name="funcionario"  placeholder="Nome do Solicitante" required>
+                        <label for="funcionario"><b>Nome do Funcionário:</b></label>
+                        <input type="text" class="form-control" name="funcionario"  placeholder="Nome do Funcionário Solicitante" required>
                     </div>
                     <div class="form-group">
                         <label for="quantidade_solicitade"><b>Quantidade Solicitada:</b></label>
@@ -43,4 +43,3 @@
     </div>
 
 @endsection
-<!--https://stackoverflow.com/questions/55023271/how-to-use-triggers-in-laravel-->

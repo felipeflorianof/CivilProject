@@ -4,7 +4,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-  <div id="search-container">
+  <div id="search-container" class="pesquisa">
       <form action="/" method="GET">
       <div class='box-div'>
               <div class='box-search'>
@@ -23,6 +23,7 @@
   <div class="pai-index">
 
 @foreach($materials as $material)
+@if($material->quantidade >= 1)
 
 <div class="card" style="width: 18rem;">
   <img class="card-img-top" src="/img/pexels-jeshootscom-834892.jpg" alt="Card image cap">
@@ -41,7 +42,7 @@
     </div>
   </div>
 </div>
-
+@endif
 @endforeach
 </div>
 @endsection
