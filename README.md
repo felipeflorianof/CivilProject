@@ -4,4 +4,4 @@
 - Construí o sistema utilizando Laravel e MYSQL no Back-end e no Front-end utilizei JavaScript e bootStrap.
 
 Imagem da página Home do Projeto:
-![2023-01-10](https://user-images.githubusercontent.com/102492775/211618870-617f65a0-bbce-4c39-ad81-cce0179e6805.png)
+![2023-01-13](https://user-images.githubusercontent.com/102492775/212370937-9bfab835-905f-4a29-9b4a-cc5af3d98e3c.png)
