@@ -62,7 +62,7 @@
         //alert(delete_id);
           Swal.fire({
             title: 'Você tem certeza?',
-            text: "Esse item sairá do estoque! Porém você ainda poderá ter acesso ao registro na aba 'Arquivos'.",
+            text: "Fazer isso é recomendado quando o item que está no estoque chega à zero. Você ainda poderá ver esse registro na aba 'Arquivados'",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

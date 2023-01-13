@@ -8,7 +8,6 @@
 
 <h4 class="text-center">Registros Arquivados</h4>
 
-<div class="form">
     <table id="myTable" class="table table-bordered table-sm table-dark">
         <thead class="thead-dark">
                 <tr>
@@ -35,7 +34,6 @@
               </tbody>
     </table>
 @endsection
-</div>
 
 @section('scripts')
 <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>

@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/select.css') }}">
 
 <h4 class="card-title text-center layoutText">Lista da saida de itens do Estoque:</h4>
-<div class="layout">
 
   <table id="myTable" class="table table-bordered table-sm table-dark">
             <thead >
@@ -33,7 +32,6 @@
                 @endforeach
             </tbody>
   </table>
-</div>
 @endsection
 
 @section('scripts')

@@ -141,6 +141,11 @@ class CivilController extends Controller
         return view('CivilProject.extra', ['extra' => $extra]);
     }
 
+    public function extradata(){
+        $extra = ExtraHour::all();
+        return view('CivilProject.extradata', ['extra' => $extra]);
+    }
+
     public function query(){
         $materials = Material::onlyTrashed()->get();
         return view('CivilProject.query', ['materials' => $materials]);

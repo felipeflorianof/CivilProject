@@ -22,5 +22,4 @@ class Material extends Model
         return $this->hasMany('App\Models\Applicant');
     }
 
-    protected $guarded = [];
 }

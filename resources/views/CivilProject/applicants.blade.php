@@ -6,8 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/applicants.css') }}">
 <h4 class="card-title text-center">Lista de itens retirados do Estoque</h4>
 
-<div class="form">
-  <table id="myTable" class="table table-bordered table-sm table-dark text-center">
+  <table id="myTable" class="table table-bordered table-sm table-dark text-center display nowrap" style="width:100%">
     <thead class="thead-dark">
       <tr>     
         <th class="text-center" scope="col">Funcionário</th>
@@ -22,18 +21,17 @@
       </tr>
     </thead>
     <tbody>
-    
     @foreach($applicants as $applicant)
       <tr>
         <td>{{ $applicant->funcionario }}</td>
         <td>{{ $applicant->nome }}</td>
         <td>{{ $applicant->marca }}</td>
         <td>{{ $applicant->quantidade }}</td>
-        <td>{{ $applicant->devolvido }}</td>
+        <td>{{ $applicant->devolvido }}</td> 
         <td>{{ date('d/m/Y', strtotime($applicant->created_at)) }}</td>
         <td>{{ date('d/m/Y', strtotime($applicant->data_devolucao)) }}</td>
         <td>{{ $applicant->mais_observacoes }}</td>
-        <td><a href="{{ route('CivilProject-return', ['id' => $applicant->id]) }}" class="btn btn-success">Devolver</a></td>
+        <td><a href="{{ route('CivilProject-return', ['id' => $applicant->id]) }}" class="test btn btn-success">Devolver</a></td>
       </tr>
     @endforeach
     </tbody>
