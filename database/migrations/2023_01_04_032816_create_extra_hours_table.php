@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('Extra_Hours', function (Blueprint $table) {
+        Schema::create('extra_hours', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('funcionario');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_extra_hours');
+        Schema::dropIfExists('extra_hours');
     }
 };

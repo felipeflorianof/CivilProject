@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css">
-        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css' />
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css' />
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js'></script>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.10.25/datatables.min.js"></script>
+
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="web icon" type="png" href="{{ asset('img/logo_site_3.png') }}">
         <link rel="stylesheet" href="{{ asset('css/pattern.css') }}">
@@ -17,18 +26,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <title>@yield('title', 'Melo Leal Empreiteira')</title>
    </head>
   
+   <!-- Arrumar layout padrão -->
    
    <body>
     <nav class="sidebar">
    
-           <img src="\img\logo_site_full.png" width="240px" style="margin-top: -30px; margin-bottom: 20px;">
+           <img src="\img\MeloLealLogo.png" width="240px" style="margin-top: -30px; margin-bottom: 20px;">
      
          <ul>
             <li class="active"><a href="{{ route('CivilProject-index') }}">Estoque</a></li>
-            <li><a href="{{ route('CivilProject-extra') }}">Hora Extra</a></li>
+            <li><a href="{{ route('CivilProject-list') }}">Hora Extra</a></li>
             <li>
                <a href="#" class="feat-btn">Gerenciar Estoque
                <span class="fas fa-caret-down first"></span>
@@ -44,25 +55,10 @@
                </a>
                <ul class="serv-show">
                <li>
-                  <a href="{{ route('CivilProject-extradata') }}">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                     <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
-                     </svg>&nbsp;&nbsp;Hora Extra
-                  </a>
+                  <a href="{{ route('CivilProject-applicants') }}">Itens Retirados</a>
                </li>
                <li>
-                  <a href="{{ route('CivilProject-applicants') }}">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                     <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
-                     </svg>&nbsp;&nbsp;Itens Retirados
-                  </a>
-               </li>
-               <li>
-                  <a href="{{ route('CivilProject-query') }}">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-                     <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
-                     </svg>&nbsp;&nbsp;Dados Arquivados
-                  </a>
+                  <a href="{{ route('CivilProject-query') }}">Dados Arquivados</a>
                </li>
                </ul>
             </li>
@@ -71,19 +67,9 @@
       </nav>
     @yield('content')
 
-
-
-  
-
-
-
-
-
-
-
-   
    @include('sweetalert::alert')
     @yield('scripts')
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
       <script>
             $('.feat-btn').click(function(){
                $('nav ul .feat-show').toggleClass("show");

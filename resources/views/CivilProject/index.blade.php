@@ -36,9 +36,9 @@
     <p class="card-text">Para Saber mais detalhes deste item <a href="{{ route('CivilProject-info', ['id' => $material->id]) }}" class="link-primary">Clique aqui</a></p>
     <div class="acoes">
               <a href="{{ route('CivilProject-edit', ['id' => $material->id]) }}">
-              <button class="btn btn-primary">Editar</button>
+              <button class="btn btn-primary btn-sm">Editar</button>
               </a>
-              <button type="button" class="btn btn-danger servideletebtn">Arquivar</button>
+              <button type="button" class="btn btn-danger btn-sm servideletebtn">Arquivar</button>
     </div>
   </div>
 </div>

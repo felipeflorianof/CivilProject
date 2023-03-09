@@ -15,10 +15,22 @@ Route::get('/applicants', [CivilController::class, 'applicants'])->name('CivilPr
 Route::get('/info/{id}', [CivilController::class, 'info'])->where('id', '[0-9]+')->name('CivilProject-info');
 Route::get('/select', [CivilController::class, 'select'])->name('CivilProject-select');
 Route::get('/extra', [CivilController::class, 'extra'])->name('CivilProject-extra');
-Route::get('/extradata', [CivilController::class, 'extradata'])->name('CivilProject-extradata');
-Route::post('/extrastore', [CivilController::class, 'extrastore'])->name('CivilProject-extrastore');
+Route::get('/list', [CivilController::class, 'list'])->name('CivilProject-list');
+
 Route::get('/query', [CivilController::class, 'query'])->name('CivilProject-query');
 Route::get('/return/{id}', [CivilController::class, 'return'])->where('id', '[0-9]+')->name('CivilProject-return');
 Route::delete('/{id}', [CivilController::class, 'SoftDeleteAndForceDelete'])->where('id', '[0-9]+')->name('CivilProject-SoftDeleteAndForceDelete');
 Route::delete('/query/{id}', [CivilController::class, 'SoftDeleteAndForceDelete'])->where('id', '[0-9]+')->name('CivilProject-SoftDeleteAndForceDelete');
 Route::fallback([CivilController::class, 'notfound'])->name('CivilProject-notfound');
+Route::post('/list/getextrahour', [CivilController::class, 'getextrahour'])->name('CivilProject-getextrahour');
+
+
+
+//ExtraHour
+    Route::post('/storeExtraHour', [CivilController::class, 'storeExtraHour'])->name('storeExtraHour');
+    Route::get('/editExtraHour', [CivilController::class, 'editExtraHour'])->name('editExtraHour');
+    Route::post('/updateExtraHour', [CivilController::class, 'updateExtraHour'])->name('updateExtraHour');
+    Route::post('/deleteSingleExtraHour', [CivilController::class, 'deleteSingleExtraHour'])->name('deleteSingleExtraHour');
+    Route::post('/deleteSelectedExtraHour', [CivilController::class, 'deleteSelectedExtraHour'])->name('deleteSelectedExtraHour');
+    
+    

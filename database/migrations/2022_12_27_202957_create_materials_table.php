@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('quantidade')->unsigned();
             $table->string('marca', 55)->nullable();
             $table->text('complemento', 55)->nullable();
-            $table->boolean('type');
             $table->integer('quantidadeoriginal');
         });
     }
